@@ -1,2 +1,9 @@
-<h1>Comments#new</h1>
-<p>Find me in app/views/comments/new.html.erb</p>
+<h1>Comment on <em>"<%= @post.title %>"</em> below.</h1>
+
+
+<%= simple_form_for @comment, url: post_comments_path(@post) do |f| %>
+	<%= f.input :body, placeholder: "Write your comment here..." %>
+
+	<%= f.button :submit %>
+<% end %>
+
