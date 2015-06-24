@@ -1,3 +1,4 @@
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -43,3 +44,24 @@ Post.create([
 	}
 
 ])
+
+post = Post.last 
+
+post.comments.create({body: "This is a primary example of why I hate you. You suck, and so does this hello world blog."})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
