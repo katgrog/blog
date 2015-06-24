@@ -8,9 +8,11 @@ class PostsController < ApplicationController
 
   def show
   	# We assign an instance variable 
-    @post = Post.find(params[:id])
   	# Rails sends it to the view if it's there (show)
   	# Rails renders the view (show)	
+
+    # Look for comments on this post 
+    @comments = @post.comments.all 
   end
 
   def new

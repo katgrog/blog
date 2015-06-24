@@ -33,5 +33,15 @@
 </section>
 
 <section class="post__body">
-	<p><%= simple_format @post.body  %></p>
+	<%= simple_format @post.body  %>
+
+	<h3>Comments</h3>
+	<hr>
+
+	<%= @comments.each do |comment| %>
+
+		
+	<% end %>
+
+
 </section>
