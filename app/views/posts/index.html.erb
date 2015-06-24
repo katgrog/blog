@@ -1,0 +1,47 @@
+<header>
+	<h1>
+		<%= link_to "Writing Ruby", root_path %>
+	</h1>
+
+	<!-- Carousel -->
+	<div class="carousel">
+		<h3>The first draft of everything is shit.</br><cite>- Hemmingway</cite></h3>
+	</div>
+</header>
+
+<!-- Paginator -->
+<nav class="pagination pagination__top">
+<!-- Provide pagination later with Kaminari Gem. -->
+</nav>
+
+<!-- A list of Posts -->
+<section class="posts">
+	<!-- Loop over posts -->
+	<% @posts.each do |post| %>
+
+			<section class="post">
+			<!-- Title of post -->
+
+			<h2><%= link_to post.title, post  %></h2>
+
+			<!-- tuncated body of post -->
+			<p><%= truncate post.body, length: 90, seperator: '' %></p>
+
+			<p>
+			<!-- When it was posted -->
+				<small>Posted <%= time_ago_in_words post.created_at %> ago.
+				<!-- if it was published -->
+					<% if post.published? %>
+						<span class="separator">•</span>
+						<!-- Where it was published -->
+						Published in <%= link_to post.publication, post.url  %>
+						<!-- When it was published  -->
+						on <%= post.published_at%>.
+					<% end %>
+				</small>
+			</p>
+			</section>
+
+	<% end %>		
+
+</section>

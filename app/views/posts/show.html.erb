@@ -1,0 +1,37 @@
+<section class="post__title">
+	<!-- Access the Post with instance variable set in controller -->
+	<h2><%= @post.title %></h2>
+	<!-- Include Byline, link to filter results by author later -->
+	<p>By <%= @post.author  %></p>
+
+	<p>
+		<small>Post <%= time_ago_in_words @post.created_at %> ago.</small>
+	</p>
+
+	<% if @post.published? %>
+		<p>
+			<small>Published in <%=  link_to @post.publication, @post.url %> on 
+			<%= @post.published_at  %></small>
+		</p>
+	<% end %>
+
+	<div class="actions">
+		<%= link_to "home", root_path, class: "actions__link"%>
+		<span>•</span>
+
+		<%= link_to "edit", edit_post_path(@post), class: "actions__link" %>
+		<span>•</span>
+
+		<%= link_to "delete", post_path(@post), method: :delete, class: "actions__link" %>
+	</div>
+
+	<div>
+		<% if @post.pull_quote.present? %>
+			<blockquote><%= @post.pull_quote %></blockquote>
+		<% end %>
+	</div>
+</section>
+
+<section class="post__body">
+	<p><%= simple_format @post.body  %></p>
+</section>

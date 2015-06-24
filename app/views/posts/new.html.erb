@@ -1,0 +1,17 @@
+<h1>New Post</h1>
+
+<!-- Form goes here -->
+
+<%= simple_form_for @post do |form| %>
+	<%= form.input :title %>
+	<%= form.input :body %>
+	<%= form.input :publication, 	label: "Where first published" %>
+	<%= form.input :url, 			label: "Link to publication" %>
+	<%= form.input :published_at, 	label: "Date of first publication" %>
+	<%= form.input :author %>
+	<%= form.input :pull_quote %>
+
+	<%= form.button :submit %>
+<% end %> 
+
+
