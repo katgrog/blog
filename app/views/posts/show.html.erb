@@ -2,7 +2,7 @@
 	<!-- Access the Post with instance variable set in controller -->
 	<h2><%= @post.title %></h2>
 	<!-- Include Byline, link to filter results by author later -->
-	<p>By <%= link_to @post.author, root_path(author: @post.author.downcase.to_param)  %></p>
+	<p>By <%= link_to @post.author, root_path(author: @post.author.to_param)  %></p>
 
 	<p>
 		<small>Post <%= time_ago_in_words @post.created_at %> ago.</small>
