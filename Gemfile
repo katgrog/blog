@@ -53,6 +53,8 @@ end
 
 gem 'simple_form'
 
+gem 'namecase'
+
 
 
 
