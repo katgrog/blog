@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :find_post, except: [:index, :new, :create]
+
   def index
   	@posts = Post.all
   	# render :index
@@ -8,8 +10,7 @@ class PostsController < ApplicationController
   	# We assign an instance variable 
     @post = Post.find(params[:id])
   	# Rails sends it to the view if it's there (show)
-  	# Rails renders the view (show)
-  	
+  	# Rails renders the view (show)	
   end
 
   def new
@@ -28,11 +29,10 @@ class PostsController < ApplicationController
   end 
 
   def edit
-    @post = Post.find(params[:id])    
+ 
   end 
 
   def update
-    @post = Post.find(params[:id])
     # Make the data secure
     if @post.update(post_params)
         redirect_to @post
@@ -42,7 +42,6 @@ class PostsController < ApplicationController
   end
 
   def destroy 
-    @post = Post.find(params[:id])
     # Find the post for deleting 
     @post.destroy 
     # Then delete that post 
@@ -52,6 +51,10 @@ class PostsController < ApplicationController
   private
   def post_params
       params.require(:post).permit(:title, :body, :publication, :url, :published_at, :author, :pull_quote)
+  end
+
+  def find_post
+    @post = Post.find(params[:id])
   end
 end
 
