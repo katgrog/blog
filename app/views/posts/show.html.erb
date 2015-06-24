@@ -35,12 +35,16 @@
 <section class="post__body">
 	<%= simple_format @post.body  %>
 
-	<h3>Comments</h3>
 	<hr>
+	<h3>Comments</h3>
+	
+	<h4><%= link_to "Add a Comment", new_post_comment_path(@post) %></h4>
 
-	<%= @comments.each do |comment| %>
-
-		
+	<% @comments.each do |comment| %>
+		<div class="post__comment">
+			<%= simple_format comment.body %>
+			<p><small><%= time_ago_in_words comment.created_at %> ago.</small></p>
+		</div>
 	<% end %>
 
 
